@@ -1,0 +1,62 @@
+接口地址：
+https://commerce.hh-sky.com/public/index.php/shopping/Admin/
+
+添加管理员
+接口名：AddAdmin
+POST：
+admin_name:管理员账号
+account_pass:密码
+real_name:真实名字
+phone_number:手机号码
+id_card:身份证号码
+返回：
+error:大于0代表错误
+data:
+
+
+获取管理员列表
+接口名：GetAdminList
+POST：【无】
+返回：
+error:大于0代表错误
+data:
+ 0
+ admin_id:管理员账号ID
+ admin_name:管理员账户号
+ real_name:真实名字
+ phone_number:手机号码
+ id_card:身份证号
+ account_state:账号状态:0-封闭,1-正常
+ authority:权限列表，[1,2,3,4,5],权限:json数组文本,1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
+
+
+设置管理员信息
+接口名：SetAdmin
+POST：
+admin_id:管理员账号ID
+[real_name]:真实名字【可选提交】
+[phone_number]:手机号码【可选提交】
+[account_state]:账号状态【可选提交】
+返回：
+error:大于0代表错误
+data:
+
+
+更改管理员密码
+接口名：UpAdminPass
+POST：
+admin_id:管理员账号ID
+account_pass:新密码
+返回：
+error:大于0代表错误
+data:
+
+
+设置管理员权限
+接口名：SetAdminAuthority
+POST：
+admin_id:管理员账号ID
+authority_value:权限值，格式化json文本（[1,2,3,4,5]）,权限:json数组文本,1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
+返回：
+error:大于0代表错误
+data:

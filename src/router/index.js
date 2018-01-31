@@ -23,8 +23,8 @@ export default new Router({
                     component: resolve => require(['../components/page/BaseTable.vue'], resolve)
                 },
                 {
-                    path: '/vuetable',
-                    component: resolve => require(['../components/page/VueTable.vue'], resolve)     // vue-datasource组件
+                    path: '/userInfo',
+                    component: resolve => require(['../components/page/userInfo.vue'], resolve)     // 用户列表
                 },
                 {
                     path: '/baseform',
