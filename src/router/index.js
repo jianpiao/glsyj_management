@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from '../components/page/Login.vue'
+import Login from '../components/page/login/Login.vue'
 
 Vue.use(Router);
 
@@ -24,7 +24,7 @@ export default new Router({
                 },
                 {
                     path: '/userInfo',
-                    component: resolve => require(['../components/page/userInfo.vue'], resolve)     // 用户列表
+                    component: resolve => require(['../components/page/admin/userInfo.vue'], resolve)     // 用户列表
                 },
                 {
                     path: '/baseform',
