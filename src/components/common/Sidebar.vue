@@ -30,160 +30,84 @@
                         title: '项目介绍'
                     },
                     {
-                        icon: 'el-icon-menu',
-                        index: '2',
-                        title: '管理员管理',
-                        subs: [
-                            {
-                                index: 'basetable',
-                                title: '基础表格'
-                            },
-                            {
-                                index: 'userInfo',
-                                title: '管理员列表'
-                            },
-                            {
-                                index: 'userInfo',
-                                title: '更改管理密码'
-                            }
-                        ]
+                        icon: 'el-icon-date',
+                        index: 'userInfo',
+                        title: '管理员管理'
+                    },
+                    // {
+                    //     icon: 'el-icon-date',
+                    //     index: '3',
+                    //     title: '表单',
+                    //     subs: [
+                    //         {
+                    //             index: 'vueeditor',
+                    //             title: '编辑器'
+                    //         },
+                    //         {
+                    //             index: 'markdown',
+                    //             title: 'markdown'
+                    //         },
+                    //         {
+                    //             index: 'upload',
+                    //             title: '文件上传'
+                    //         }
+                    //     ]
+                    // },
+                    {
+                        icon: 'el-icon-star-on',
+                        index: 'userList',
+                        title: '用户管理'
                     },
                     {
-                        icon: 'el-icon-date',
+                        icon: 'el-icon-upload',
                         index: '3',
-                        title: '表单',
-                        subs: [
-                            {
-                                index: 'vueeditor',
-                                title: '编辑器'
-                            },
-                            {
-                                index: 'markdown',
-                                title: 'markdown'
-                            },
-                            {
-                                index: 'upload',
-                                title: '文件上传'
-                            }
-                        ]
-                    },
-                    {
-                        icon: 'el-icon-date',
-                        index: '4',
-                        title: '用户管理',
-                        subs: [
-                            {
-                                index: 'baseform',
-                                title: '用户列表'
-                            },
-                            {
-                                index: 'vueeditor',
-                                title: '搜索用户'
-                            },
-                            {
-                                index: 'markdown',
-                                title: '更新用户密码'
-                            },
-                            {
-                                index: 'upload',
-                                title: '审核用户'
-                            },
-                            {
-                                index: 'upload',
-                                title: '开店'
-                            },
-                            {
-                                index: 'upload',
-                                title: '取关联店铺列表（ID取店铺）'
-                            }
-                        ]
-                    },
-                    {
-                        icon: 'el-icon-date',
-                        index: '5',
                         title: '店铺管理',
                         subs: [
                             {
-                                index: 'baseform',
+                                index: 'shopList',
                                 title: '店铺列表'
                             },
                             {
-                                index: 'vueeditor',
-                                title: '搜索店铺'
-                            },
-                            {
-                                index: 'markdown',
-                                title: '店铺分类列表'
-                            },
-                            {
-                                index: 'upload',
-                                title: '店铺信息'
-                            },
-                            {
-                                index: 'upload',
-                                title: '设置店铺禁闭状态'
+                                index: 'recommend',
+                                title: '店铺推广'
                             }
                         ]
                     },
                      {
-                        icon: 'el-icon-date',
-                        index: '6',
-                        title: '商品管理',
-                        subs: [
-                            {
-                                index: 'baseform',
-                                title: '商品列表'
-                            },
-                            {
-                                index: 'vueeditor',
-                                title: '搜索商品'
-                            },
-                            {
-                                index: 'markdown',
-                                title: '商品状态'
-                            }
-                        ]
+                        icon: 'el-icon-d-caret',
+                        index: 'commodityList',
+                        title: '商品管理'
                     },
                      {
-                        icon: 'el-icon-date',
+                        icon: 'el-icon-menu',
                         index: '7',
                         title: '分类管理',
                         subs: [
                             {
-                                index: 'baseform',
+                                index: 'classification',
                                 title: '商品(系统)分类'
                             },
                             {
-                                index: 'vueeditor',
+                                index: 'shopClassification',
                                 title: '店铺分类'
                             }
                         ]
                     },
                     {
-                        icon: 'el-icon-date',
-                        index: '8',
-                        title: '投诉管理',
-                        subs: [
-                            {
-                                index: 'baseform',
-                                title: '投诉列表'
-                            },
-                            {
-                                index: 'vueeditor',
-                                title: '投诉状态'
-                            }
-                        ]
-                    },
-                    {
-                        icon: 'el-icon-star-on',
-                        index: 'basecharts',
-                        title: '图表'
-                    },
-                    {
-                        icon: 'el-icon-upload2',
-                        index: 'drag',
-                        title: '拖拽'
+                        icon: 'el-icon-warning',
+                        index: 'faceback',
+                        title: '投诉管理'
                     }
+                    // {
+                    //     icon: 'el-icon-picture',
+                    //     index: 'basecharts',
+                    //     title: '图表'
+                    // },
+                    // {
+                    //     icon: 'el-icon-upload2',
+                    //     index: 'drag',
+                    //     title: '拖拽'
+                    // }
                 ]
             }
         },

@@ -8,7 +8,7 @@
                     {{username}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item command="loginout">退出</el-dropdown-item>
+                    <el-dropdown-item command="loginout">退出帐号</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -29,10 +29,30 @@
         },
         methods:{
             handleCommand(command) {
+                //  退出帐号
                 if(command == 'loginout'){
-                    localStorage.removeItem('ms_username')
-                    this.$router.push('/login');
+                    this.out()
                 }
+            },
+            out() {
+                let self = this;
+                this.$axios({
+                    method: 'post',
+                    url: self.API + 'Quit',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    withCredentials: true
+                }).then(function (res) {
+                    self.$message({
+                        type: 'success',
+                        message: '退出成功'
+                    });
+                    self.$router.push('/login')
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             }
         }
     }

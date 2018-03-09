@@ -1,22 +1,35 @@
+//  引入vue及vuex
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as actions from './actions'
-import * as getters from './getters'
-import cart from './modules/cart'
-import products from './modules/products'
-import global from './modules/global'
 
 Vue.use(Vuex)
 
-const debug = process.env.NODE_ENV !== 'production'
+
+const state = {
+    userID: ''
+}
+
+const mutations = {
+    USER_ID( state,i ) {
+        state.userID = i
+    }
+}
+
+const actions = {
+    userID: ({ commit },i) => {
+        commit('USER_ID',i)
+    }
+}
+
+const getters = {
+    userID: userID => state.userID,
+    showDialog: showDialog => state.showDialog
+}
+
 
 export default new Vuex.Store({
+    state,
+    mutations,
     actions,
-    getters,
-    modules: {
-        cart,
-        products,
-        global,
-    },
-    strict: debug,
+    getters
 })

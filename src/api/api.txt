@@ -1,62 +1,612 @@
-接口地址：
-https://commerce.hh-sky.com/public/index.php/shopping/Admin/
+总控台接口:
+http://12.10.60.222/GL_Commercial_Street/public/index.php/shopping/Admin/
 
-添加管理员
-接口名：AddAdmin
-POST：
+
+登陆:
+接口名:Login
+POST:
 admin_name:管理员账号
-account_pass:密码
-real_name:真实名字
-phone_number:手机号码
-id_card:身份证号码
-返回：
-error:大于0代表错误
-data:
+account_pass:管理员密码
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ session_id:登陆ID
+ authority_info:
+  admin_id:管理员ID
+  admin_name:管理员账号名
+  real_name:真实名字
+  authority：权限，数组[1,2,3,4,5]。1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
 
 
-获取管理员列表
-接口名：GetAdminList
-POST：【无】
-返回：
-error:大于0代表错误
-data:
+
+退出登陆:
+接口名:Quit
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+
+添加管理员:
+接口名:AddAdmin
+POST:
+admin_name: 新增账号名
+account_pass: 账号密码
+real_name: 真实姓名
+phone_number: 手机号码
+id_card: '',提交一个空文本
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+获取管理员列表:
+接口名:GetAdminList
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
  0
- admin_id:管理员账号ID
- admin_name:管理员账户号
- real_name:真实名字
- phone_number:手机号码
- id_card:身份证号
- account_state:账号状态:0-封闭,1-正常
- authority:权限列表，[1,2,3,4,5],权限:json数组文本,1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
+ admin_id:管理员ID
+ admin_name: 账号名
+ real_name: 真实姓名
+ phone_number: 手机号码
+ account_state: 账号状态:0-封闭,1-正常
+ authority：权限,json数组，[1,2,3,4,5]，1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
 
 
-设置管理员信息
-接口名：SetAdmin
-POST：
-admin_id:管理员账号ID
-[real_name]:真实名字【可选提交】
-[phone_number]:手机号码【可选提交】
-[account_state]:账号状态【可选提交】
-返回：
-error:大于0代表错误
-data:
+设置管理员信息:
+接口名:SetAdmin
+POST:
+admin_id: 管理员ID
+[real_name]:真实名字（不作修改请勿提交）
+[phone_number]:手机号码（不作修改请勿提交）
+[account_status]:账号状态（0-封闭,1-正常），（不作修改请勿提交）
+返回:
+error:错误，当他大于0时代表错误
+data: 
 
 
 更改管理员密码
-接口名：UpAdminPass
-POST：
-admin_id:管理员账号ID
+接口名:UpAdminPass
+POST:
+admin_id: 管理员ID
 account_pass:新密码
-返回：
-error:大于0代表错误
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+
+设置管理员权限:
+接口名:SetAdminAuthority
+POST:
+admin_id: 管理员ID
+authority_value:权限值,JSON.stringify([1,2,3,4,5]),1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+获取用户列表:
+接口名:GetUserList
+POST:
+state: 账号类型，0-停用账号列表,1-待审核账号列表,2-正常用户列表 3-审核否决 4-全部
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ account_id:用户ID
+ account_name:用户账号名字
+ phone_number:手机号码
+ email:电子邮件
+ real_name:真实姓名
+ id_number:省份证号
+ life_photos:生活照片
+ id_card_photo_positive:身份证正面
+ id_card_photo_other:身份证反面
+ account_state:账户状态:0-账号被停用,1-待审核,2-正常,3-审核否决
+
+
+
+搜索用户:
+接口名:SearchUser
+POST:
+type: 搜索类型(1-账号名,2-手机号码,3-电子邮件,4-身份证号)
+value: 搜索值
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ account_id:用户ID
+ account_name:用户账号名字
+ phone_number:手机号码
+ email:电子邮件
+ real_name:真实姓名
+ id_number:省份证号
+ life_photos:生活照片
+ id_card_photo_positive:身份证正面
+ id_card_photo_other:身份证反面
+ account_state:账户状态:0-账号被停用,1-待审核,2-正常,3-审核否决
+
+
+通过审核:
+接口名:AuditingUser
+POST:
+account_id: 用户ID
+pass: 是否通过0-不通过审核，1-审核通过
+remark:审核备注
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+更新用户密码:
+接口名:UpUserPass
+POST:
+account_id: 用户ID
+account_pass: 新密码
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+用户ID取关联店铺列表（一个用户可能关联多个店铺）:
+接口名:UserIdGetShopList
+POST:
+account_id: 用户ID
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_authority_id:关联索引ID
+ account_id     :用户ID
+ shop_id	:店铺ID
+ shop_category_id	:店铺分类ID
+ shop_category_name	:店铺分类名称
+ shop_name	:店铺名
+ shop_image	:店铺LOGO
+ back_image	:店铺背景图
+ synopsis	:店铺简介
+ priority	:优先级
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:分类名称（店铺）
+ goods_image	:商品图片地址
+ synopsis        :店铺简介
+ address:        :店铺地址
+ expiration_date :店铺过期时间
+ shop_state      :店铺营业状态（0-关闭状态，1-营业状态）
+ encage          :店铺禁闭状态（0-禁闭，1-正常）
+
+
+获取商铺分类列表
+接口名:ShopCategoryList
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_category_id: 分类ID
+ shop_category_name:分类名称
+
+
+获取店铺可选择地址:
+接口名:GetSelectAddress
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ select_id: 可选地址ID
+ former_stage: 父地址ID
+ address_name: 地址名称
+ after：
+  select_id: 可选地址ID
+  former_stage: 父地址ID
+  address_name: 地址名称
+
+
+
+给用户开店:
+接口名:OpenShop
+POST:
+account_id: 用户ID
+shop_category: 店铺所属分类（通过【获取商铺分类列表】接口获取）
+expiration_date:过期日期(2018-01-01 23:59:59)
+campus:校区ID
+building:楼宇ID
+layers:第几层
+address:精确店铺地址（如东“区生活区A16卡”）
+返回:
+error:错误，当他大于0时代表错误
+data: 
+
+
+
+取店铺列表:
+接口名:GetShopList
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_id	:店铺ID
+ shop_category_id	:店铺分类ID
+ shop_category_name	:店铺分类名称
+ shop_name	:店铺名
+ shop_image	:店铺LOGO
+ back_image	:店铺背景图
+ synopsis	:店铺简介
+ priority	:优先级
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:分类名称（店铺）
+ goods_image	:商品图片地址
+ synopsis        :店铺简介
+ address:        :店铺地址
+ expiration_date :店铺过期时间
+ shop_state      :店铺营业状态（0-关闭状态，1-营业状态）
+ encage          :店铺禁闭状态（0-禁闭，1-正常）
+
+
+搜索店铺:
+接口名:SearchShop
+POST:
+shop_name: 店铺名字
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_id	:店铺ID
+ shop_category_id	:店铺分类ID
+ shop_category_name	:店铺分类名称
+ shop_name	:店铺名
+ shop_image	:店铺LOGO
+ back_image	:店铺背景图
+ synopsis	:店铺简介
+ priority	:优先级
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:分类名称（店铺）
+ goods_image	:商品图片地址
+ synopsis        :店铺简介
+ address:        :店铺地址
+ expiration_date :店铺过期时间
+ shop_state      :店铺营业状态（0-关闭状态，1-营业状态）
+ encage          :店铺禁闭状态（0-禁闭，1-正常）
+
+
+根据店铺分类ID取店铺列表:
+接口名:TegoryIdToShopList
+POST:
+shop_category_id: 店铺分类ID
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_id	:店铺ID
+ shop_category_id	:店铺分类ID
+ shop_category_name	:店铺分类名称
+ shop_name	:店铺名
+ shop_image	:店铺LOGO
+ back_image	:店铺背景图
+ synopsis	:店铺简介
+ priority	:优先级
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:分类名称（店铺）
+ goods_image	:商品图片地址
+ synopsis        :店铺简介
+ address:        :店铺地址
+ expiration_date :店铺过期时间
+ shop_state      :店铺营业状态（0-关闭状态，1-营业状态）
+ encage          :店铺禁闭状态（0-禁闭，1-正常）
+
+
+获取店铺信息:
+接口名:GetShop
+POST:
+shop_id: 店铺ID
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_id	:店铺ID
+ shop_category_id	:店铺分类ID
+ shop_category_name	:店铺分类名称
+ shop_name	:店铺名
+ shop_image	:店铺LOGO
+ back_image	:店铺背景图
+ synopsis	:店铺简介
+ priority	:优先级
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:分类名称（店铺）
+ goods_image	:商品图片地址
+ synopsis        :店铺简介
+ address:        :店铺地址
+ expiration_date :店铺过期时间
+ shop_state      :店铺营业状态（0-关闭状态，1-营业状态）
+ encage          :店铺禁闭状态（0-禁闭，1-正常）
+
+
+店铺ID取关联商户账号列表（一个店铺可能有多个账号）:
+接口名:GetShopUserList
+POST:
+shop_id: 店铺ID
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ shop_id: 店铺ID
+ account_id:用户ID
+ account_name:用户账号名字
+ phone_number:手机号码
+ email:电子邮件
+ real_name:真实姓名
+ id_number:省份证号
+ life_photos:生活照片
+ id_card_photo_positive:身份证正面
+ id_card_photo_other:身份证反面
+ account_state:账户状态:0-账号被停用,1-待审核,2-正常,3-审核否决
+
+
+设置店铺禁闭状态:
+接口名:SetShopEncageState
+POST:
+shop_id: 店铺ID
+state: 店铺状态,0-禁闭,1-正常
+返回:
+error:错误，当他大于0时代表错误
 data:
 
 
-设置管理员权限
-接口名：SetAdminAuthority
-POST：
-admin_id:管理员账号ID
-authority_value:权限值，格式化json文本（[1,2,3,4,5]）,权限:json数组文本,1-管理员管理,2-用户管理,3-店铺管理,4-商品审核,5-投诉管理
-返回：
-error:大于0代表错误
+添加店铺分类:
+接口名:AddShopCategory
+POST:
+category_name: 分类名
+返回:
+error:错误，当他大于0时代表错误
 data:
+
+
+删除店铺分类:
+接口名:DeleteShopCategory
+POST:
+system_category_id: 店铺分类ID
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+店铺分类排序:
+接口名:SortShopCategoryList
+POST:
+list_order: 列表排序，JSON.stringify([{shop_category_id:商铺分类ID,priority:优先级(小优后大)},{shop_category_id:1,priority:1}])
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+取商品列表(分页):
+接口名:GetGoodsList
+POST:
+e_page_number: 每页显示条数
+page:  要显示第几页，默认请提交1，即取回第一页数据
+返回:
+error:错误，当他大于0时代表错误
+data:
+ e_page_number:每页条数
+ page         :现处于第几页
+ PageCount    :总页数
+ data:
+  0
+  shop_id        :店铺ID
+  shop_name      :店铺名称
+  goods_id	:商品ID
+  goods_name	:商品名称
+  system_category_id	:分类ID（系统）
+  category_name	:分类名（系统）
+  shop_goods_category_id	:分类ID（店铺）
+  goods_price	:商品默认价格
+  goods_image	:商品图片地址
+  goods_details   :商品详情
+  recommend:     :是否为推荐商品
+  goods_state    :商品状态:0-删除状态，1-下架状态，2-上架状态
+
+
+搜索商品:
+接口名:SearchGoods
+POST:
+type: 搜索类型:1-商品名字，2-日期搜索
+value: 商品名（type=1）,日期范围(type=2,格式:2018-01-01&2018-02-01）
+返回:
+error:错误，当他大于0时代表错误
+data:
+ 0
+ shop_id        :店铺ID
+ shop_name      :店铺名称
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类名（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:商品默认价格
+ goods_image	:商品图片地址
+ goods_details   :商品详情
+ recommend:     :是否为推荐商品
+ goods_state    :商品状态:0-删除状态，1-下架状态，2-上架状态
+
+
+商品ID换商品信息:
+接口名:IDtoGoods
+POST:
+goods_id: 商品ID
+返回:
+error:错误，当他大于0时代表错误
+data:
+ shop_id        :店铺ID
+ shop_name      :店铺名称
+ goods_id	:商品ID
+ goods_name	:商品名称
+ system_category_id	:分类ID（系统）
+ category_name	:分类名（系统）
+ shop_goods_category_id	:分类ID（店铺）
+ goods_price	:商品默认价格
+ goods_image	:商品图片地址
+ goods_details   :商品详情
+ recommend:     :是否为推荐商品
+ goods_state    :商品状态:0-删除状态，1-下架状态，2-上架状态
+
+
+设置商品状态:
+接口名:SetGoodsState
+POST:
+goods_id: 商品ID
+state   : 商品状态:0-删除状态，1-下架状态，2-上架状态
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+获取商品(系统)分类列表:
+接口名:GoodsSystemCategoryList
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data:
+ 0
+ system_category_id: 分类ID
+ category_name     : 分类名称
+
+
+
+ 删除商品分类(系统):
+接口名:AddGoodsSystemCategory
+POST:
+system_category_id: 分类ID
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+添加商品分类(系统):
+接口名:AddGoodsSystemCategory
+POST:
+category_name     : 分类名称
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+删除商品分类(系统):
+接口名:AddGoodsSystemCategory
+POST:
+system_category_id: 分类ID
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+商品分类列表(系统)排序:
+接口名:SortGoodsSystemCategoryList
+POST:
+list_order: JSON.stringify([{system_category_id:商品分类ID(1),priority:所处排序},{system_category_id:商品分类ID(2),priority:所处排序}])
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+获取投诉列表:
+接口名:GetComplaintList
+POST:
+type:投诉列表类型:0-已处理,1-未处理
+返回:
+error:错误，当他大于0时代表错误
+data:
+ 0
+ complaint_id        :投诉ID
+ shop_id             :店铺id
+ shop_name           :店铺名称
+ user_id             :投诉用户ID（和商户系统的用户ID不同）
+ order_id            :订单ID（数据库索引标识）
+ order_number        :订单号（字符串）
+ complaint_type_id   :投诉类型ID
+ complaint_type_name :投诉类型名称
+ name                :投诉者昵称
+ phone_number        :电话号码
+ content             :投诉内容
+ state               :投诉状态:0-已处理,1-未处理
+
+
+设置投诉状态:
+接口名:SetComplaint
+POST:
+complaint_id:投诉ID
+state       :设置状态:0-已处理,1-未处理
+返回:
+error:错误，当他大于0时代表错误
+data:
+
+
+取回未审核用户数量:
+接口名:GetUnauditedUserNumber
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 数量
+
+
+取回未处理投诉数量:
+接口名:GetUnauditedComplaintNumber
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 数量
+
+
+
+
+获取店铺首页推广的列表:
+接口名:GetHomeShop
+POST:【无】
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ 0
+ id:推广ID
+ shop_id:店铺ID
+ shop_name:店铺名称
+ expiration_date:过期日期
+ priority:优先级
+ state:状态：0-关闭,1-正常
+
+
+设置店铺首页推广:
+接口名:SetHomeShop
+POST:
+ id:推广ID（等于0，则为创建一个推广）
+ shop_id:店铺ID
+ [expiration_date]:过期日期-(id=0,则为提交项)
+ [priority]:优先级-(id=0,则为提交项)
+ [state]:状态：0-关闭,1-正常
+返回:
+error:错误，当他大于0时代表错误
+data: 返回提示

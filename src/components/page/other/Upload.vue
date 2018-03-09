@@ -8,8 +8,8 @@
         </div>
         <div class="content-title">支持拖拽</div>
         <div class="plugins-tips">
-            Element UI自带上传组件。
-            访问地址：<a href="http://element.eleme.io/#/zh-CN/component/upload" target="_blank">Element UI Upload</a>
+            文件上传（测试版）
+            <!-- 访问地址：<a href="http://element.eleme.io/#/zh-CN/component/upload" target="_blank">Element UI Upload</a> -->
         </div>
         <el-upload
             class="upload-demo"
