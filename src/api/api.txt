@@ -610,3 +610,59 @@ POST:
 返回:
 error:错误，当他大于0时代表错误
 data: 返回提示
+
+
+
+店铺取款记录:
+
+接口名:GetComplaintList
+POST:[无]
+返回:
+
+error:大于0代表错误
+
+data:
+ complaint_id:         投诉编号
+ user_id:              投诉者ID
+ order_id:             订单ID
+ order_number:         订单号
+ complaint_type_id:    投诉类型编号
+ complaint_type_name:  投诉类型
+ name:                 投诉者名称
+ phone_number:         投诉者电话
+ content:              投诉内容
+
+
+
+
+取款申请列表:
+接口名:GetWithdrawList
+POST:
+state:0-取全部审核列表，1-待审核列表，2-审核通过列表，3-审核失败列表
+返回:
+error:错误，当他大于0时代表错误
+data: 
+ withdrawals_id:  提款号
+ shop_id:         店铺ID
+ shop_name:       店铺名称
+ address:         店铺地址
+ real_name:       提款者
+ money:           提款金额
+ wallet_money_front: 提款前钱包金额
+ wallet_money_after: 提款后金额
+ state:           提款状态:1-待审核,2-取款成功,3-审核失败
+ creation_time:   提款时间
+ up_time:         消息处理时间
+ creation_time:   提款时间
+ up_time:         处理时间
+ review_response: 审核回复（文本）
+
+
+取款审核:
+接口名:ExamineWithdraw
+POST:
+withdrawals_id:  提款号
+examine_state: 0-否决审核，1-通过审核
+返回:
+error:错误，当他大于0时代表错误
+data: 

@@ -11,7 +11,7 @@
             </el-breadcrumb>
         </div>
         <div class="handle-box">
-            <el-button type="primary" icon="el-icon-arrow-left">< 返回列表</el-button>
+            <el-button type="primary" icon="el-icon-arrow-left" @click="backPage">< 返回列表</el-button>
         </div>
         <el-table
             :data="shopInfo"
@@ -136,6 +136,9 @@
                     console.log(res.data.data)
                     self.shopInfo = res.data.data
                 })
+            },
+            backPage() {
+                this.$router.go(-1)
             }
         },
         filters: {

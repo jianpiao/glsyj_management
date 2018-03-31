@@ -35,9 +35,13 @@ export default new Router({
                     component: resolve => require(['../components/page/user/related.vue'], resolve)
                 },
                 {
+                    path: '/withdraw',
+                    component: resolve => require(['../components/page/withdraw/withdraw.vue'], resolve)
+                },
+                {
                     path: '/openShop',
                     component: resolve => require(['../components/page/user/openShop.vue'], resolve)
-                },
+                }, 
                 {
                     path: '/shopList',
                     component: resolve => require(['../components/page/shop/shopList.vue'], resolve)

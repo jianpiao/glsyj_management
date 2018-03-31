@@ -11,7 +11,6 @@
             </el-breadcrumb>
         </div>
         <div class="handle-box">
-            <el-button type="primary" icon="delete" class="handle-del mr10">批量删除</el-button>
             <el-select v-model="userState" placeholder="状态选择" class="handle-select mr10" @change="selectUserState">
                 <el-option key="4" label="全部" value="4"></el-option>
                 <el-option key="0" label="停用账号" value="0"></el-option>
@@ -23,7 +22,6 @@
             <el-button type="primary" icon="search">搜索</el-button>
         </div>
         <el-table :data="userData = userList" border style="width: 100%" ref="multipleTable">
-            <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="account_name" label="账号名" sortable width="110">
             </el-table-column>
             <el-table-column prop="real_name" label="真实名字" width="95">

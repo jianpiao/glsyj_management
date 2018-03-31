@@ -25,14 +25,19 @@
             return {
                 items: [
                     {
-                        icon: 'el-icon-setting',
+                        icon: 'iconfont icon-shuoming',
                         index: 'readme',
                         title: '项目介绍'
                     },
                     {
-                        icon: 'el-icon-date',
+                        icon: 'iconfont icon-guanlikehu',
                         index: 'userInfo',
                         title: '管理员管理'
+                    },
+                    {
+                        icon: 'iconfont icon-shenhekuanxiang',
+                        index: 'withdraw',
+                        title: '取款审核'
                     },
                     // {
                     //     icon: 'el-icon-date',
@@ -54,12 +59,12 @@
                     //     ]
                     // },
                     {
-                        icon: 'el-icon-star-on',
+                        icon: 'iconfont icon-renyuandangan',
                         index: 'userList',
                         title: '用户管理'
                     },
                     {
-                        icon: 'el-icon-upload',
+                        icon: 'iconfont icon-msnui-shop',
                         index: '3',
                         title: '店铺管理',
                         subs: [
@@ -74,12 +79,12 @@
                         ]
                     },
                      {
-                        icon: 'el-icon-d-caret',
+                        icon: 'iconfont icon-shangpin-',
                         index: 'commodityList',
                         title: '商品管理'
                     },
                      {
-                        icon: 'el-icon-menu',
+                        icon: 'iconfont icon-fenlei',
                         index: '7',
                         title: '分类管理',
                         subs: [
@@ -94,7 +99,7 @@
                         ]
                     },
                     {
-                        icon: 'el-icon-warning',
+                        icon: 'iconfont icon-msnui-complain',
                         index: 'faceback',
                         title: '投诉管理'
                     }
@@ -120,6 +125,7 @@
 </script>
 
 <style scoped>
+    @import "../../assets/icon/iconfont.css";
     .sidebar{
         display: block;
         position: absolute;

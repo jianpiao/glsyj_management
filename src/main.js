@@ -7,7 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';    // 默认主题
 // import '../static/css/theme-green/index.css';       // 浅绿色主题
 import "babel-polyfill";
-//引入api 设为全局遍历
+//引入api 设为全局变量
 import API from 'api/api.js'
 
 Vue.use(ElementUI);
