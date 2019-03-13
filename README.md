@@ -31,15 +31,15 @@
 	|           |-- Home.vue           	 // 公共路由入口
 	|           |-- Sidebar.vue          // 公共左边栏
 	|		|-- page                   	 // 主要路由页面
-	|           |-- BaseCharts.vue       // 基础图表
-	|           |-- BaseForm.vue         // 基础表单
+	|           |-- admin                // 用户信息
+	|           |-- classification       // 商品分类
+	|           |-- commodify            // 商品信息
+	|           |-- Login            	 // 登录
+	|           |-- other                // 其他组件
+	|           |-- shop                 // 商店信息
+	|           |-- user                 // 商家信息
+	|           |-- withdraw             // 提款
 	|           |-- BaseTable.vue        // 基础表格
-	|           |-- Login.vue          	 // 登录
-	|           |-- Markdown.vue         // markdown组件
-	|           |-- Readme.vue           // 自述组件
-	|           |-- Upload.vue           // 图片上传
-	|           |-- VueEditor.vue        // 富文本编辑器
-	|           |-- VueTable.vue         // vue表格组件
 	|   |-- App.vue                      // 页面入口文件
 	|   |-- main.js                      // 程序入口文件，加载各种公共组件
 	|-- .babelrc                         // ES6语法编译配置
@@ -66,3 +66,4 @@
 	// 执行构建命令，生成的dist文件夹放在服务器下即可访问
 	npm run build
 
+![image](https://github.com/jianpiao/glsyj_management/blob/master/gif/glsyjM.gif)
